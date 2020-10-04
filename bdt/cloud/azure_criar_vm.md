@@ -42,19 +42,19 @@ Para iniciar a criação da VM, acesse o [Portal da Azure](https://portal.azure.
 
 7. Verifique todos os parâmetros de criação da VM e clique no botão Create caso esteja tudo correto:
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_create.png)
+   ![](img/azure_vm_create.png)
 
 8. Clique no botão Download private key and create resource. Esta chave será necessária para que você possa acessar a VM:
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_generate_new_key_pair.png)
+   ![](img/azure_vm_generate_new_key_pair.png)
 
 9. Aguarde um tempo até que a VM seja criada. Se tudo ocorrer certo, você receberá uma mensagem confirmando que o *deploy* está completo. Para exibir os detalhes da VM, clique em **Go to resource**:
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_go_to_resource.png)
+   ![](img/azure_vm_go_to_resource.png)
 
 10. Neste painel é possível visualizar e alterar as configuraçẽos de sua VM. Aproveite e anote o endereço público de IP, pois essa informação será necessária para acessar a VM posteriormente
 
-    ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_public_ip_address.png)
+    ![](img/azure_vm_public_ip_address.png)
 
 ## Acessando a sua VM
 
