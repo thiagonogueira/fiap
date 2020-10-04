@@ -18,27 +18,27 @@ Para iniciar a criação da VM, acesse o [Portal da Azure](https://portal.azure.
 
 2. No canto superior direito clique em **+ Add**  e depois em **+ Virtual Machine**:
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_add_menu.png)
+   ![](img/azure_vm_add_menu.png)
 
 3. Em **Project details**, verifique que a opação de Subscription é *Azure para Estudantes*. Escolha um *Resource Group* ou, caso ainda não tenha um Resource Group, crie um novo:
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_new_resource_group.png)
+   ![](img/azure_new_resource_group.png)
 
 4. Na seção **Instance Details** escolha um nome para sua VM, uma região, uma imagem e um tamanho (configuração de hardware).
 
    **Observação** : Tome cuidado com a opção de tamanho pois poderá gerar um custo muito alto.
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_instance_details.png)
+   ![](img/azure_vm_instance_details.png)
 
 5. Em **Administrator account** escolha a opção SSH public key. Providencie um nome de usuário e deixe que a Azure crie o par  de chaves pública e privada para você. No final da criação da VM você sera orientado a fazer o download da chave privada. Guarde essa chave em local seguro e lembre-se de que sem ela, não será possível acessar a sua VM.
 
    Em **Inbound port rules**  deixe a opção padrão *Allow selected ports*, apenas com o SSH (22) selecionado.
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_admnistracao_e_portas.png)
+   ![](img/azure_vm_admnistracao_e_portas.png)
 
 6. Clique no botão Review + Create:
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure_vm_review_create.png)
+   ![](img/azure_vm_review_create.png)
 
 7. Verifique todos os parâmetros de criação da VM e clique no botão Create caso esteja tudo correto:
 
