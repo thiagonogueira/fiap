@@ -14,7 +14,7 @@ Para iniciar a criação da VM, acesse o [Portal da Azure](https://portal.azure.
 
 1. Clique em Virtual Machines:
 
-   ![](/home/tnascimn/Documents/fiap/bdt/cloud/img/azure-home.png)
+   ![](img/azure-home.png)
 
 2. No canto superior direito clique em **+ Add**  e depois em **+ Virtual Machine**:
 
