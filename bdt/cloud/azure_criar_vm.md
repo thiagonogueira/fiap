@@ -61,3 +61,21 @@ Para iniciar a criação da VM, acesse o [Portal da Azure](https://portal.azure.
 Agora que você criou a sua VM com sucesso, vamos acessá-la atravś de uma conexão SSH. Para isso, utilizaremos um cliente SSH chamado MobaXterm. Caso ainda não o tenha instalado em sua máquina, utilize o link abaixo para fazer o download. Se tiver restrições para instalar programas em seu computador, você deve optar pela utilização da versão portable. Neste caso, basta fazer o download, descompactar o arquivo e iniciar diretamente o executável.
 
 [Download MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html)
+
+1. Para criar uma nova sessão de SSH, abra o MobaXterm e clique em **Session**:
+   ![](img/moba_session.png)
+
+2. Na nova janela, adicione o ip da VM no campo **Remote Host**. Habilite a opção **Specify Username** e adicione o nome do usuário utilizado no cadastrado na SSH key. 
+   ![](img/moba_ssh_basic_settings.png)
+
+3. Clique na aba **Advanced Settings** e habilite a opção **Use private key**. Clique no ícone deste campo e carregue o arquivo com a sua SSH private key.
+   ![](img/moba_ssh_advanced_settings.png)
+
+4. Clique na aba **Bookmark Settings**, de um nome adequado para a sua sessão e clique em ok.
+   ![](img/moba_ssh_bookmark_settings.png)
+
+5. O MobaXterm deverá agora se conectar automaticamente ao servidor. Se tudo der certo, você verá uma tela similar a apresentada abaixo:
+   ![](img/moba_ssh_session_conected.png)
+
+6. Nas próximas que você abrir o MobaXterm, a sua sessão estará disponível na aba esquerda. Basta clicar duas vezes para se conectar:
+   ![](img/moba_ssh_session_bookmarked.png)
