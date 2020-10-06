@@ -6,7 +6,7 @@ Neste trinamento vamos criar uma VM na Azure que permita a colaboração de dive
 
 Para criar a instância na Azure, siga os passos apresentados no tutorial [**Criar VM na Azure**](azure_criar_vm.md)
 
-##  Instalando o Anaconda na VM
+##  Instalar o Anaconda na VM
 
 Para instalar e configurar o anaconda na VM vc deve acessá-la via SSH e executar os comandos abaixo.
 
@@ -97,7 +97,7 @@ Para instalar e configurar o anaconda na VM vc deve acessá-la via SSH e executa
 
    Note que agora há a palavra (base) no início da linha do prompt. Isso indica que o Anaconda está carregado com o ambiente *base* ativado
 
-## Criar e configurar novo ambiente no Anaconda
+## Criar e configurar um novo ambiente (env) no Anaconda
 
 1. Agora vamos criar um novo ambiente no anaconda com python 3.8 chamado fiap:
 
@@ -352,11 +352,30 @@ Para instalar e configurar o anaconda na VM vc deve acessá-la via SSH e executa
     (fiap) pf1120@minha-primeira-vm:~$
     ```
 
-## Ajustar o ambiente
+7. Inicie o Jupyter:
 
-Antes de rodar o Jupyter, precisamos fazer alguns ajustes no ambiente:
+   ```
+   (fiap) pf1120@minha-primeira-vm:~$ jupyter-notebook 
+    [I 18:48:16.007 NotebookApp] Serving notebooks from local directory: /home/pf1120
+    [I 18:48:16.007 NotebookApp] Jupyter Notebook 6.1.4 is running at:
+    [I 18:48:16.007 NotebookApp] http://localhost:8888/
+    [I 18:48:16.007 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+    [W 18:48:16.011 NotebookApp] No web browser found: could not locate runnable browser.
+    ```
+8. Para testar se o Jupyter está rodando corretamente, abra outro terminal e rode o comando:
 
-### Liberação de porta Azure para permitir acesso externo
+    ```
+    $ telnet localhost 8888
+    Trying 127.0.0.1...
+    Connected to localhost.
+    Escape character is '^]'.
+    ```
+    Você deve obter uma saída igual a mostrada acima.
+
+
+## Ajustes no ambiente
+
+### Liberação de porta Azure para permitir acesso externo ao Jupyter
 
 Para permitir que o Jupyter seja acessado externamente, é necessário fazer a liberação da porta 8888 na Azure. 
 
@@ -372,7 +391,79 @@ Para permitir que o Jupyter seja acessado externamente, é necessário fazer a l
 4. Aguarde um tempo e verifique que a regra foi criada com sucesso:
    ![](img/azure_vm_port_rule_created.png)
 
-### Criação de um diretório para os projetos do time
+5. Se estiver tudo correto, você deve agora conseguir acessar o Jupyter a partir de seu browser:
+    ![](img/jupyter_login.png)
+ 
+
+### Iniciar o Jupyter como serviço
+
+Ao rodar o jupyter diretamente do prompt, ele parará de funcionar caso você deslogue da VM ou finalize a conexão de ssh. Desta forma, é aconselhavel adicionar o Jupyter como um serviço do linux, fazendo com que ele inicie automaticamente a cada boot.
+
+**Nota**: Antes de iniciar esta atividade, certifique-se de que o Jupyter não está rodando na VM.
+
+1. No diretório home de seu usuário crie um novo arquivo chamado `.jupyter_start.sh` com as seguintes linhas. Lembre de ajustar as 3 linhas de definições de variáveis ANACONDA_PATH, CONDA_ENV e JUPYTER_BASE_DIR:
+   
+   ```
+    #!/bin/bash
+
+    ANACONDA_PATH="/home/pf1120/anaconda3"
+    CONDA_ENV="fiap"
+    JUPYTER_BASE_DIR="/opt/fiap"
+
+    export PATH="${ANACONDA_PATH}/bin:$PATH"
+    source ${ANACONDA_PATH}/etc/profile.d/conda.sh
+    ${ANACONDA_PATH}/bin/conda activate ${CONDA_ENV}
+    ${ANACONDA_PATH}/envs/${CONDA_ENV}/bin/jupyter-notebook --no-browser -y --ip 0.0.0.0 --port 8888 --notebook-dir=${JUPYTER_BASE_DIR}
+    ```
+
+2. Altere a permissão do arquivo criado para `775`:
+
+    ```
+    $ chmod 775 .jupyter_start.sh
+    ```
+
+3. Agora você deve criar o arquivo `/etc/systemd/system/jupyter-notebook.service` como `sudo` e adicionar as seguintes linhas:
+
+    ```
+    [Unit]
+    Description=Jupyter Notebook Server
+
+    [Service]
+    Type=simple
+    Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:snap/bin"
+    ExecStart=/home/pf1120/.jupyter_start.sh
+    User=pf1120
+    Group=pf1120
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+4. Inicie o serviço e o habilite para rodar automaticamento do boot:
+
+    ```
+    sudo systemctl start jupyter-notebook.service
+    sudo systemctl enable jupyter-notebook.service
+    ```
+
+5. Verifique se o serviço está rodando corretamente:
+
+    ```
+    $ sudo systemctl status jupyter-notebook.service
+    ● jupyter-notebook.service - Jupyter Notebook Server
+    Loaded: loaded (/etc/systemd/system/jupyter-notebook.service; enabled; vendor preset: enabled)
+    Active: active (running) since Tue 2020-10-06 17:53:45 UTC; 32min ago
+    Main PID: 30380 (.jupyter_start.)
+        Tasks: 2 (limit: 4680)
+    CGroup: /system.slice/jupyter-notebook.service
+            ├─30380 /bin/bash /home/pf1120/.jupyter_start.sh
+            └─30395 /home/pf1120/anaconda3/envs/fiap/bin/python /home/pf1120/anaconda3/envs/fiap/bin/jupyter-notebook --no-browser -y --ip 0.0.0.0 --port 8888 --notebook-dir=/opt/fiap
+    ```
+6. Reinicie a VM e verifique se o serviço subiu corretamente acessanto o Jupyter através de seu browser.
+   **Nota**: o ip de sua VM pode ser alterado a cada boot, então certifique-se de estar utilizando o ip correto após o boot
+    ![](img/jupyter_login.png)
+
+
+### Criação de um diretório compartilhado para o grupo (opcional)
 
 Em geral, em projetos desenvolvidos por uma equipe em um ambiente centralizado, criamos um diretório compartilhado para que todos os usuários possam acessá-lo e modificá-lo. Vamos seguir os passos para criar um diretório de projeto em `/opt/fiap`.
 
@@ -391,6 +482,10 @@ Em geral, em projetos desenvolvidos por uma equipe em um ambiente centralizado, 
    ```
 
 3. Adicione ao grupo `project` todos os usuários que devem ter acesso direto ao diretório do projeto.
-   **Nota**: Somente adicione os usuários que acessarão diretamente a VM por SSH/SFTP. Os usuários que farão acesso apenas pelo Jupyter não precisam ser cadastrados nesta etapa.
+   
+   Somente adicione os usuários que acessarão diretamente a VM por SSH/SFTP. Os usuários que farão acesso apenas pelo Jupyter não precisam ser cadastrados nesta etapa. 
+   **Nota**: Para adicionar novos usuários a sua VM, utilize o tutorial [Create an additional SSH-login enabled user for your Azure Linux VM without third-party tools](https://msicc.net/create-an-additional-ssh-login-enabled-user-for-your-azure-linux-vm-without-third-party-tools/)
+
     ```
-    $ sudo 
+    $ sudo usermod -a -G project pf1120
+    ```
