@@ -488,4 +488,16 @@ Em geral, em projetos desenvolvidos por uma equipe em um ambiente centralizado, 
 
     ```
     $ sudo usermod -a -G project pf1120
+    $ sudo usermod -a -G project test
+    ```
+4. Peça para alguem de sua equipe logar na VM (ou faça login com um usuário diferente), crie um arquivo no diretório compartilhado e verifique as permissões do arquivo. Você deve notar que o grupodo arquivo é o mesmo configurado anteriormente.
+   ```
+   $ ssh 40.114.64.154
+   $ cd /opt/fiap/
+   $ touch access_test
+   $ ll
+    total 8
+    drwxrwsr-x 2 root project 4096 Oct  6 19:31 ./
+    drwxr-xr-x 3 root root    4096 Oct  5 11:25 ../
+    -rw-rw-r-- 1 test project    0 Oct  6 19:31 access_test
     ```
