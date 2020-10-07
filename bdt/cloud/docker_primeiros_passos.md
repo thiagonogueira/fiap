@@ -336,7 +336,7 @@ Vamos trabalhar com dois terminais abertos (**T1** e **T2**).
     1 package can be upgraded. Run 'apt list --upgradable' to see it.
     ```
     
-    b. **[T1]** Instalar o pacote `nmap`. O flag `-y` pula a pregunta de confirmação:
+    b. **[T1]** Instalar o pacote `nmap`. O flag `-y` pula a pergunta de confirmação:
     ```
     root@5b83d8b5b521:/# apt install -y nmap
     Reading package lists... Done
