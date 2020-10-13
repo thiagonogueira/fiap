@@ -15,7 +15,6 @@ Uma vez concluído, o seguinte aplicativo será executado em seu ambiente de des
 
 ![](img/aks_azure-vote.png)
 
-Em tutoriais adicionais, a imagem de contêiner será carregada para um Registro de Contêiner do Azure e, em seguida, implantada em um cluster AKS.
 
 ### Obter o código do aplicativo
 
@@ -24,7 +23,7 @@ O aplicativo de exemplo usado neste tutorial é um aplicativo de votação bási
 Use o git para clonar o aplicativo de exemplo para seu ambiente de desenvolvimento:
 
 ```
-git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
+git clone https://github.com/thiagonogueira/azure-voting-app-redis.git
 ```
 
 Altere para o diretório clonado.
@@ -45,7 +44,7 @@ Execute o arquivo docker-compose.yaml de exemplo para criar a imagem de contêin
 docker-compose up -d
 ```
 
-Quando completado, use o comando docker images para ver as imagens criadas. Três imagens foram baixadas ou criadas. A imagem azure-vote-front contém o aplicativo de front-end e usa a imagem nginx-flask como base. A imagem redis é usada para iniciar uma instância do Redis.
+Quando completado, use o comando docker images para ver as imagens criadas. Três imagens foram bax'ixadas ou criadas. A imagem azure-vote-front contém o aplicativo de front-end e usa a imagem nginx-flask como base. A imagem redis é usada para iniciar uma instância do Redis.
 
 ```
 $ docker images
@@ -109,7 +108,6 @@ az group create --name myResourceGroup --location eastus
 ```
 
 Crie uma instância do Registro de Contêiner do Azure com o comando az acr create e forneça seu próprio nome de registro. O nome do registro deve ser exclusivo no Azure e conter de 5 a 50 caracteres alfanuméricos. No restante deste tutorial, <acrName> é usado como um espaço reservado para o nome do registro de contêiner. Forneça seu próprio nome de registro exclusivo. A SKU Basic é um ponto de entrada de otimização de custo para fins de desenvolvimento que fornece um equilíbrio entre o armazenamento e taxa de transferência.
-CLI do Azure
 
 ```
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -118,13 +116,19 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ### Logon no registro de contêiner
 
 Para usar a instância do ACR, você deve primeiro fazer logon. Use o comando az acr login e forneça o nome exclusivo especificado para o registro de contêiner na etapa anterior.
-CLI do Azure
 
 ```
 az acr login --name <acrName>
 ```
 
 O comando retorna uma mensagem de Logon bem-sucedido quando é concluído.
+
+**Nota**: Caso o comando dê um erro, tente rodar os seguintes comandos e repita a opração anterior:
+
+```
+sudo apt-get purge docker-credential-pass
+sudo apt -V install gnupg2 pass
+```
 
 ### Marcar uma imagem de contêiner
 
@@ -252,7 +256,7 @@ Para se conectar ao cluster Kubernetes no computador local, use o kubectl, o cli
 Se você usa o Azure Cloud Shell, o kubectl já estará instalado. Se você quiser instalá-lo localmente, use o comando az aks install-cli:
 
 ```
-az aks install-cli
+sudo az aks install-cli
 ```
 
 ### Conectar-se ao cluster usando o kubectl
@@ -298,7 +302,7 @@ O arquivo de manifesto de exemplo do repositório git clonado na primeira etapa 
 nano azure-vote-all-in-one-redis.yaml
 ```
 
-Substitua microsoft pelo seu nome de servidor de logon do ACR. Esse valor pode ser encontrado na linha 51 do arquivo de manifesto. O seguinte exemplo mostra o nome da imagem padrão:
+Substitua microsoft pelo seu nome de servidor de logon do ACR. Esse valor pode ser encontrado na linha 60 do arquivo de manifesto. O seguinte exemplo mostra o nome da imagem padrão:
 
 ```
 containers:
@@ -430,7 +434,7 @@ O exemplo a seguir usa o comando kubectl autoscale para dimensionar automaticame
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Como alternativa, você pode criar um arquivo de manifesto para definir o comportamento do dimensionador automático e os limites de recursos. Veja a seguir o exemplo de um arquivo de manifesto chamado azure-vote-hpa.yaml.
+Como alternativa, você poderia também criar um arquivo de manifesto para definir o comportamento do dimensionador automático e os limites de recursos. Veja a seguir o exemplo de um arquivo de manifesto chamado azure-vote-hpa.yaml.
 
 ```
 apiVersion: autoscaling/v1
@@ -462,7 +466,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-Use kubectl apply para aplicar o dimensionador automático definido no arquivo de manifesto azure-vote-hpa.yaml.
+Neste caso, para aplicar o dimensionador automático definido no arquivo de manifesto azure-vote-hpa.yaml utilize o comando kubectl apply:
 
 ```
 kubectl apply -f azure-vote-hpa.yaml
