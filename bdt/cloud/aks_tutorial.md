@@ -632,3 +632,18 @@ kubectl get service azure-vote-front
 
 Agora abra um navegador da Web local no endereço IP do serviço:
 ![](img/aks_azure-vote2.png)
+
+## 7. Deletando os recursos criados no Tutorial
+
+Ao final da atividade, não esqueça de deletar o cluter:
+
+```
+az aks delete --resource-group myResourceGroup --name myAKSCluster
+```
+
+Delete também o Azure Container Registry:
+```
+az acr delete --resource-group myResourceGroup --name <acrName>
+```
+
+Por fim, vc tambem pode deletar o Resource Group criado na atividade.
