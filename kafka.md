@@ -6,9 +6,9 @@ Neste tutorial, tomaremos o primeiro contato com o Kafka. Procure realizá-lo te
 
 1. Suba o serviço Kafka através do Ambari
 
-2. Abra um terminal e vá para o diretório ** /usr/hdp/current/kafka-broker/bin**
+2. Abra um terminal e vá para o diretório **/usr/hdp/current/kafka-broker/bin**
    ``` 
-   $ cd /usr/hdp/current/kafka-broker/bin
+   cd /usr/hdp/current/kafka-broker/bin
    ``` 
    
 5. Liste os tópicos existentes no cluster:
