@@ -35,6 +35,7 @@ Neste tutorial, tomaremos o primeiro contato com o Kafka. Procure realizá-lo te
 Que tal um momento para explorar livremente seu novo cluster Kafka? Nas instruções abaixo estão apresentadas algumas sugestões, mas sinta-se à vontade para explorar à sua maneira. Não se esqueça de controlar e sistematizas as alterações que você faz para conseguir analisar seus impactos no comportamento do cluster.
 
 1. Abra novos terminais de consumers e producers e analise os comportamentos. Para os consumers, procures explorar a flag `--from-beginning` e `--group`
+   **Nota:**: Dependendo da versão utilizada, a flag `--group` deve ser substituida por `--consumer-property group.id=nome_do_grupo`
 
 2. Crie novos tópicos alterando so parâmetros `--replication-factor` e `--partitions` e analise os resultados
 
@@ -42,15 +43,23 @@ Que tal um momento para explorar livremente seu novo cluster Kafka? Nas instruç
 
 4. Utilize os comandos utilizado acima apennas com o parâmetro `--help` e avalie as diferentes possibilidades de uso
 
-### APIs
 
 ### DYI
 
-1. Página da API:
-   Utilize o link abaixo para descobrir como baixar a API kafka-python.
+#### API Python:
+
+   Utilize o link abaixo para descobrir como utilizar a API kafka-python.
 
     [https://pypi.org/project/kafka-python/](https://pypi.org/project/kafka-python/)
 
-2. Aproveite os exemplos apresentados para desenvolver um producer e um consumer simples. Para ajudar no desenvolvimento, sempre deixe aberto no terminal um produder e um consumer do tópico em que está utilizando.
+#### API Java:
 
-3. Evolua sua solução para trabalhar com grupos de consumers 
+   Utilize os links abaixo para descobrir como utilizar a API kafka para Java.
+
+   [https://kafka.apache.org/documentation/#api]([https://kafka.apache.org/documentation/#api)
+   [https://dzone.com/articles/kafka-producer-and-consumer-example](https://dzone.com/articles/kafka-producer-and-consumer-example)
+
+
+1. Aproveite os exemplos apresentados para desenvolver um producer e um consumer simples. Para ajudar no desenvolvimento, sempre deixe aberto no terminal um produder e um consumer do tópico em que está utilizando.
+
+2. Evolua sua solução para trabalhar com grupos de consumers 
