@@ -1,35 +1,38 @@
-# Contato inicial com o Kafka
+# Ingestão geral
 
-Neste tutorial, tomaremos o primeiro contato com o Kafka. Procure realizá-lo tendo em mente cada um dos conceitos apresentados na parte teórica.
 
-## Demonstração guiada
+## SQOOP
 
-1. Suba o serviço Kafka através do Ambari
+1. Realize o import da tabela LOC_CLI_FISICA para o HDFS:
+   ```
+   sqoop import --connect jdbc:oracle:thin:@localhost:1521/xe --table HDPADMIN.LOC_CLI_FISICA ----target-dir /data/SQOOP/HDPADMIN.LOC_CLI_FISICA --username hdpadmin --password hadoop
+   ```
+   
 
 2. Abra um terminal e vá para o diretório **/usr/hdp/current/kafka-broker/bin**
    ``` 
    cd /usr/hdp/current/kafka-broker/bin
    ``` 
    
-5. Liste os tópicos existentes no cluster:
+3. Liste os tópicos existentes no cluster:
    ```
     ./kafka-topics.sh --list --zookeeper localhost:2181
    ```
 
-6. Crie um novo tópico chamado primeiro:
+4. Crie um novo tópico chamado primeiro:
     ```
     ./kafka-topics.sh --zookeeper localhost:2181 --create --topic primeiro --replication-factor 1 --partitions 1
     ```
-7. Verifique as informações do tópico criado:
+5. Verifique as informações do tópico criado:
    ```
    ./kafka-topics.sh --zookeeper localhost:2181 --describe --topic primeiro
     ```
-8. Abra um novo terminal e crie um **producer** para o tópico recém criado:
+6. Abra um novo terminal e crie um **producer** para o tópico recém criado:
    ```
    ./kafka-console-producer.sh --broker-list hdpdemo.local:6667 --topic primeiro
    ```
 
-9.  Abra um novo terminal e crie um **consumer** para o tópico recém criado:
+7.  Abra um novo terminal e crie um **consumer** para o tópico recém criado:
    ```
    ./kafka-console-consumer.sh --zookeeper localhost:2181 --topic primeiro
    ```
