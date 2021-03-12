@@ -21,7 +21,7 @@ SLEEP_TIME = 0.3
 MINTIME = datetime(YEAR, MONTH, DAY, 0, 0, 0)
 MAXTIME = datetime(YEAR, MONTH, DAY, 23, 59, 59)
 
-OUTPUT_TYPES = ['db', 'file']
+OUTPUT_TYPES = ['db']
 
 method = ["credit", "debit", "credit", "credit", "debit", "credit", "credit", "cash", "credit"]
 

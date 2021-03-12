@@ -39,10 +39,15 @@
 
 10. Altere o número de partições do tópico:
     ```
-    ./kafka-topics.sh --zookeeper zk_host:port/chroot --alter --topic primeiro --partitions 40
+    ./kafka-topics.sh --zookeeper localhost:2181 --alter --topic primeiro --partitions 40
+    ```
+    
+11. Altere o tempo de retenção das mensagems no tópico:
+    ```
+    ./kafka-topics.sh --zookeeper localhost:2181 --alter --topic topic1 --config retention.ms=1000
     ```
 
-11. Delete o tópico criado:
+12. Delete o tópico criado:
     ```
     ./kafka-topics.sh --zookeeper localhost:2181 --delete --topic primeiro
     ```
