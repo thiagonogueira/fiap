@@ -358,7 +358,7 @@ Para instalar e configurar o anaconda na VM vc deve acessá-la via SSH e executa
    (fiap) pf1120@minha-primeira-vm:~$ jupyter-notebook --no-browser --ip 0.0.0.0 --port 8888 
     [I 18:48:16.007 NotebookApp] Serving notebooks from local directory: /home/pf1120
     [I 18:48:16.007 NotebookApp] Jupyter Notebook 6.1.4 is running at:
-    [I 18:48:16.007 NotebookApp] http://0.0.0.0:8888/
+    [I 18:48:16.007 NotebookApp] http://minha-primeira-vm:8888/
     [I 18:48:16.007 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
     ```
 8. Para testar se o Jupyter está rodando corretamente, abra outro terminal e rode o comando:
