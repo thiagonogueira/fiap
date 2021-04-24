@@ -402,18 +402,18 @@ Ao rodar o jupyter diretamente do prompt, ele parará de funcionar caso você de
 
 1. No diretório home de seu usuário crie um novo arquivo chamado `.jupyter_start.sh` com as seguintes linhas. Lembre de ajustar as 3 linhas de definições de variáveis ANACONDA_PATH, CONDA_ENV e JUPYTER_BASE_DIR:
    
-   ```
-    #!/bin/bash
+```
+ #!/bin/bash
 
-    ANACONDA_PATH="/home/pf1120/anaconda3"
-    CONDA_ENV="fiap"
-    JUPYTER_BASE_DIR="/opt/fiap"
+ ANACONDA_PATH="/home/pf1120/anaconda3"
+ CONDA_ENV="fiap"
+ JUPYTER_BASE_DIR="/opt/fiap"
 
-    export PATH="${ANACONDA_PATH}/bin:$PATH"
-    source ${ANACONDA_PATH}/etc/profile.d/conda.sh
-    ${ANACONDA_PATH}/bin/conda activate ${CONDA_ENV}
-    ${ANACONDA_PATH}/envs/${CONDA_ENV}/bin/jupyter-notebook --no-browser -y --ip 0.0.0.0 --port 8888 --notebook-dir=${JUPYTER_BASE_DIR}
-    ```
+ export PATH="${ANACONDA_PATH}/bin:$PATH"
+ source ${ANACONDA_PATH}/etc/profile.d/conda.sh
+ ${ANACONDA_PATH}/bin/conda activate ${CONDA_ENV}
+ ${ANACONDA_PATH}/envs/${CONDA_ENV}/bin/jupyter-notebook --no-browser -y --ip 0.0.0.0 --port 8888 --notebook-dir=${JUPYTER_BASE_DIR}
+ ```
 
 2. Altere a permissão do arquivo criado para `775`:
 
