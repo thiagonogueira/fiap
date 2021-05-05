@@ -355,12 +355,11 @@ Para instalar e configurar o anaconda na VM vc deve acessá-la via SSH e executa
 7. Inicie o Jupyter:
 
    ```
-   (fiap) pf1120@minha-primeira-vm:~$ jupyter-notebook 
+   (fiap) pf1120@minha-primeira-vm:~$ jupyter-notebook --no-browser --ip 0.0.0.0 --port 8888 
     [I 18:48:16.007 NotebookApp] Serving notebooks from local directory: /home/pf1120
     [I 18:48:16.007 NotebookApp] Jupyter Notebook 6.1.4 is running at:
-    [I 18:48:16.007 NotebookApp] http://localhost:8888/
+    [I 18:48:16.007 NotebookApp] http://minha-primeira-vm:8888/
     [I 18:48:16.007 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-    [W 18:48:16.011 NotebookApp] No web browser found: could not locate runnable browser.
     ```
 8. Para testar se o Jupyter está rodando corretamente, abra outro terminal e rode o comando:
 
@@ -403,18 +402,18 @@ Ao rodar o jupyter diretamente do prompt, ele parará de funcionar caso você de
 
 1. No diretório home de seu usuário crie um novo arquivo chamado `.jupyter_start.sh` com as seguintes linhas. Lembre de ajustar as 3 linhas de definições de variáveis ANACONDA_PATH, CONDA_ENV e JUPYTER_BASE_DIR:
    
-   ```
-    #!/bin/bash
+```
+ #!/bin/bash
 
-    ANACONDA_PATH="/home/pf1120/anaconda3"
-    CONDA_ENV="fiap"
-    JUPYTER_BASE_DIR="/opt/fiap"
+ ANACONDA_PATH="/home/pf1120/anaconda3"
+ CONDA_ENV="fiap"
+ JUPYTER_BASE_DIR="/opt/fiap"
 
-    export PATH="${ANACONDA_PATH}/bin:$PATH"
-    source ${ANACONDA_PATH}/etc/profile.d/conda.sh
-    ${ANACONDA_PATH}/bin/conda activate ${CONDA_ENV}
-    ${ANACONDA_PATH}/envs/${CONDA_ENV}/bin/jupyter-notebook --no-browser -y --ip 0.0.0.0 --port 8888 --notebook-dir=${JUPYTER_BASE_DIR}
-    ```
+ export PATH="${ANACONDA_PATH}/bin:$PATH"
+ source ${ANACONDA_PATH}/etc/profile.d/conda.sh
+ ${ANACONDA_PATH}/bin/conda activate ${CONDA_ENV}
+ ${ANACONDA_PATH}/envs/${CONDA_ENV}/bin/jupyter-notebook --no-browser -y --ip 0.0.0.0 --port 8888 --notebook-dir=${JUPYTER_BASE_DIR}
+ ```
 
 2. Altere a permissão do arquivo criado para `775`:
 
