@@ -31,7 +31,7 @@ Neste tutorial, tomaremos o primeiro contato com o Kafka. Procure realizá-lo te
 
 10. Altere o número de partições do tópico:
     ```
-    kafka-topics.sh --zookeeper zk_host:port/chroot --alter --topic primeiro --partitions 40
+    kafka-topics.sh --zookeeper localhost:2181 --alter --topic primeiro --partitions 40
     ```
 
 11. Delete o tópico criado:
