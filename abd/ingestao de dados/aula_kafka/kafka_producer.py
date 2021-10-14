@@ -1,6 +1,6 @@
 from confluent_kafka import Producer
 import time
-bootstrap_servers = 'localhost:9092'
+bootstrap_servers = 'hdpdemo.local:6667'
 
 p = Producer({'bootstrap.servers': bootstrap_servers})
 for i in range(10000):
