@@ -3,7 +3,9 @@ import time
 bootstrap_servers = 'hdpdemo.local:6667'
 
 p = Producer({'bootstrap.servers': bootstrap_servers})
-for i in range(10000):
+i = 0
+while True:
    p.produce('py-producer', f'hello{i}')
    p.produce('py-producer', f'world{i}')
-   time.sleep(1)
+   i += 1
+   time.sleep(0.5)
