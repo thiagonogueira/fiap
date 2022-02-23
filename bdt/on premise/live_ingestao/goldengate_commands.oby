@@ -1,0 +1,12 @@
+DBLOGIN USERID goldengate@localhost:1521/XE, PASSWORD hadoop
+
+ADD TRANDATA HDPADMIN.MP_SALES, ALLCOLS, NOSCHEDULINGCOLS
+
+ADD EXTRACT e_sales, TRANLOG, BEGIN NOW
+
+ADD EXTTRAIL dirdat/es, EXTRACT e_sales
+ADD EXTRACT p_sales, exttrailsource dirdat/es
+ADD RMTTRAIL dirdat/es, EXTRACT p_sales
+
+ADD REPLICAT r_sales, EXTTRAIL dirdat/es
+ADD REPLICAT r_kafka, EXTTRAIL dirdat/es
