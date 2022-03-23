@@ -127,7 +127,9 @@ while (flag):
         message = '%s - %s [%s %s] "%s %s HTTP/1.0" %s %s "%s" "%s"\n' % (ip,user,dt,tz,vrb,uri,resp,byt,referer,useragent)
     
     producer.produce(topic, message)
-
+    f.write(message)
+    f.flush()
+    
     if log_lines:
         log_lines = log_lines - 1
     flag = False if log_lines and log_lines == 0 else True
