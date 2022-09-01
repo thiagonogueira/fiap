@@ -6,9 +6,9 @@ Nesta atividade vamos utilizar uma situação simples para mostrar como decisõe
 
 Imagine que você está gerenciando uma equipe de Data Science de 5 pessoas que encontra-se em um projeto que pode trazer grandes retornos financeiros para a empresa. Neste momento, estão fazendo alguns pequenos treinamentos no próprio notebook de trabalho, apenas para testes iniciais.
 
-O membro mais Sênior da sua equipe lhe chama para uma conversa e demonstra uma preocupação quanto à insatisfação do time com relação à capacidade dos notebooks, pois até mesmo esses treinamentos inicias estão muito demorados, atrapalhando muito o rítmo de trabalho. Além disso, os resultados preliminares mostram que será necessária a utilização de um computador com uma GPU bastante potente (Nvidia Tesla P100).
+O membro mais Sênior da sua equipe lhe chama para uma conversa e demonstra uma preocupação quanto à insatisfação do time com relação à capacidade dos notebooks, pois até mesmo esses treinamentos inicias estão muito demorados, atrapalhando muito o ritmo de trabalho. Além disso, os resultados preliminares mostram que será necessária a utilização de um computador com uma GPU bastante potente (Nvidia Tesla T4).
 
-Ao sair da conversa, você está decido a fazer indicar a seu gestor a necessidade do aporte desse investimento no projeto, mas lhe ocorre que um amigo comentou de um projeto que passou por um problema similar e optou por uma solução bastante criativa: ele criou uma VM em cloud para que todo o grupo pudesse trabalhar. Além disso, nos momentos do treinamento, a mesma VM era reconfigurada com GPU e, assim que o treinamento finalizasse, a GPU era desabilitada. Com isso, os gastos com GPU ocorreriam apenas nos casos em que se estava utilizando de fato. Além disso, a VM possuia uma configuração suficiente para que os Cientistas de Dados fizessem o trabalho diário num ambiente centralizado, tornando ainda mais fácil a colaboração entre a equipe.
+Ao sair da conversa, você está decido a fazer indicar a seu gestor a necessidade do aporte desse investimento no projeto, mas lhe ocorre que um amigo comentou de um projeto que passou por um problema similar e optou por uma solução bastante criativa: ele criou uma VM em cloud para que todo o grupo pudesse trabalhar. Além disso, nos momentos do treinamento, a mesma VM era reconfigurada com GPU e, assim que o treinamento finalizasse, a GPU era desabilitada. Com isso, os gastos com GPU ocorreriam apenas nos casos em que se estava utilizando de fato. Além disso, a VM possuía uma configuração suficiente para que os Cientistas de Dados fizessem o trabalho diário num ambiente centralizado, tornando ainda mais fácil a colaboração entre a equipe.
 
 Você resolve fazer algumas simulações de preço e apresentar os dois cenários ao seu gestor para que tomem a melhor decisão.
 
@@ -31,7 +31,7 @@ Ao término das atividades cada grupo deverá submeter um trabalho no portal com
    
 2. Uma apresentação com o comparativo dos dois cenários;
 
-Os dois documentos derão ser convertidos para pdf e zipados em um único arquivo para subida no portal.
+Os dois documentos deverão ser convertidos para pdf e zipados em um único arquivo para subida no portal.
 
 ### Nota sobre o documento de evidência
 
