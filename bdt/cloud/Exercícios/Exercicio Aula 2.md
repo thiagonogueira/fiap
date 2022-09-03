@@ -33,10 +33,12 @@ Desesperado, você pensa em desistir, mas antes disso resolve ligar para o Arqui
 
 ### Atividades:
 
-1. Criar um repositório no github e adicionar os arquivos do modelo;
-2. Configurar o App Service e configurar para que utilize o repositório criado;
-3. Faça uma análise do arquivo index.html e publique no github;
-4. Aguarde um momento e verifique que a alteração foi publicada automaticamente.
+1. Criar uma conta no github;
+2. Clonar o repositório
+https://github.com/thiagonogueira/sentiment-analysis-ptbr
+4. Configurar o App Service e configurar para que utilize o repositório criado;
+5. Faça uma análise do arquivo index.html, altere o texto do botão e publique no github;
+6. Aguarde um momento e verifique que a alteração foi publicada automaticamente.
 
 
 ## Entregáveis
