@@ -125,7 +125,7 @@ Para configuração do processo, utilize os seguintes dados de origem e destino:
 #adicione neste espaço suas evidências e comentários 
 ````
 
-####Desafio 2:
+#### Desafio 2:
 
 Desenvolva um processo que faça a ingestão de todas as tabelas do banco CARLOCA. Para isso você deverá encontrar um _processor_ que auxilie a listar todas as tabelas do banco. Vale também lembrar que as tabelas de interesse possuem sempre o prefixo ``LOC`` em seu nome.
 
@@ -152,7 +152,7 @@ Para configuração do processo, utilize os seguintes dados de destino:
 #adicione neste espaço suas evidências e comentários 
 ````
 
-####Desafio 3:
+#### Desafio 3:
 
 Baseado no fluxo criado no item, desenvolva uma forma de filtrar apenas as mensagens do kafka que representem erro 404. Estes registros deverão ser enviados a um novo tópico kafka chamado ``weberrors``. Neste mesmo fluxo, adicione um processor que salve os dados no HDFS no diretório ``/data/web/weberrors``.
 
