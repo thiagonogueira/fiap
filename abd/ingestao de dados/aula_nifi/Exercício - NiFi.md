@@ -9,7 +9,7 @@ A entrega deste trabalho deverá ser um documento de evidências de execução d
 - Configuração de cada _processor_ para que se possa avaliar os parâmetros utilizados
 
 - Evidência do resultado da operação realizada que permita avaliar o resultado bem sucedido da execução do fluxo completo (como listagem no HDFS do diretório destino do fluxo, print de um terminal, etc.)
-  
+
 Lembre-se que a organização do trabalho entregue também é avaliada!
 
 ## Antes de iniciar:
@@ -19,7 +19,7 @@ Antes de iniciar as atividades propostas, é necessário alguns passos, conforme
 ### Iniciar Serviços do Hadoop
 
 Certifique-se de que os seguintes serviços estejam rodando em sua VM com Hadoop:
-   
+
 - HDFS
 - Zookeeper
 - YARN
@@ -27,7 +27,7 @@ Certifique-se de que os seguintes serviços estejam rodando em sua VM com Hadoop
 - Hive
 - Kafka
 
-### Instalar pacote Kite no NiFi  
+### Instalar pacote Kite no NiFi
 Nas versões atuais do NiFi, os _processors_ do pacote **kite** deixaram de ser distribuídos no pacote de instalação. Para executar uma das atividades, teremos que instalar o pacote manualmente no NiFi. Para a nossa sorte, esse processo limita-se a copiar o arquivo do pacote **kite** ao diretório de bibliotecas de sua instalação no NiFi.
 
 **Observação**:  É muito importante que seja adicionado o arquivo do **kite** exatamente da mesma versão de sua instalação do NiFi. Caso as versões sejam incompatíveis, o pacote não passará na validação do processo de inicialização do NiFi, causando a interrupção do programa.
@@ -39,8 +39,8 @@ Para instalação do pacote **kite**, siga as seguintes instruções:
     &nbsp;![image](img/nifi_status.png)&nbsp;
 
 2. A partir da sua VM, baixe o pacote binário do **kite** (nar) para a sua versão de NiFi. No caso da versão apresentada acima, o arquivo pode ser obtido diretamente do link abaixo:
-   [nifi-kite-nar-1.13.2.nar](bin/nifi-kite-nar-1.13.2.nar)
-   
+   [nifi-kite-nar-1.13.2.nar](https://github.com/thiagonogueira/fiap/raw/main/abd/ingestao%20de%20dados/aula_nifi/bin/nifi-kite-nar-1.13.2.nar)
+
     Você também poderá encontrar outras versões do pacote no seguinte link:
     https://mvnrepository.com/artifact/org.apache.nifi/nifi-kite-nar
 
@@ -73,7 +73,7 @@ Nesta atividade você deverá importar arquivos de vendas da sua empresa para o 
 - **Compressão dos arquivos no destino**: Nenhuma
 
 ````
-#adicione neste espaço suas evidências e comentários 
+#adicione neste espaço suas evidências e comentários
 ````
 
 #### Desafio 1:
@@ -98,10 +98,10 @@ Para realizar o desafio, considere as seguintes informações:
 - **Diretório de destino:** /data/silver/sales/
 - **Formato dos arquivos no destino:** orc
 - **Compressão dos arquivos no destino**: Nenhuma
-  
+
 
 ````
-#adicione neste espaço suas evidências e comentários 
+#adicione neste espaço suas evidências e comentários
 ````
 
 ### 2. Ingestão de uma tabela para um diretório no HDFS
@@ -122,7 +122,7 @@ Para configuração do processo, utilize os seguintes dados de origem e destino:
 **Importante:** Para evitar que a query rode continuamente, ajuste o parâmetro ``Run Schedule`` na aba SCHEDULING para **60s**. Isso permitirá que você faça uma validação da recorrência do processo sem gerar uma quantidade descontrolada de conexões simultâneas ao banco de dados.
 
 ````
-#adicione neste espaço suas evidências e comentários 
+#adicione neste espaço suas evidências e comentários
 ````
 
 #### Desafio 2:
@@ -130,7 +130,7 @@ Para configuração do processo, utilize os seguintes dados de origem e destino:
 Desenvolva um processo que faça a ingestão de todas as tabelas do banco CARLOCA. Para isso você deverá encontrar um _processor_ que auxilie a listar todas as tabelas do banco. Vale também lembrar que as tabelas de interesse possuem sempre o prefixo ``LOC`` em seu nome.
 
 ````
-#adicione neste espaço suas evidências e comentários 
+#adicione neste espaço suas evidências e comentários
 ````
 ### 3. Ingestão de mensagens de um tópico kafka para o HDFS
 
@@ -141,7 +141,7 @@ Neste exercício utilizaremos um programa python simulador de logs para fazer a 
 
 
 O programa python pode ser obtido no seguinte link:
-[log_generator-kafka.py](src/log_generator-kafka.py)
+[log_generator-kafka.py](https://raw.githubusercontent.com/thiagonogueira/fiap/main/abd/ingestao%20de%20dados/aula_nifi/src/log_generator-kafka.py)
 
 Para configuração do processo, utilize os seguintes dados de destino:
 
@@ -149,7 +149,7 @@ Para configuração do processo, utilize os seguintes dados de destino:
 - **Diretório de destino:** /data/bronze/web/weblogs/
 
 ````
-#adicione neste espaço suas evidências e comentários 
+#adicione neste espaço suas evidências e comentários
 ````
 
 #### Desafio 3:
@@ -157,5 +157,5 @@ Para configuração do processo, utilize os seguintes dados de destino:
 Baseado no fluxo criado no item, desenvolva uma forma de filtrar apenas as mensagens do kafka que representem erro 404. Estes registros deverão ser enviados a um novo tópico kafka chamado ``weberrors``. Neste mesmo fluxo, adicione um processor que salve os dados no HDFS no diretório ``/data/web/weberrors``.
 
 ````
-#adicione neste espaço suas evidências e comentários 
+#adicione neste espaço suas evidências e comentários
 ````
